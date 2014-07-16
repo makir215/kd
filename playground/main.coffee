@@ -1,9 +1,19 @@
+class V extends KDView
+  constructor: (options, data) ->
+    super options, data
 
-# Let's create a simple view
-view = new KDView
-  cssClass : "sample-view"
-  partial  : "It works!"
+  viewAppended: ->
+    console.log 'view appended is called for', @options.name
+    console.trace()
+    super()
 
-# And append it to DOM
-KDView.appendToDOMBody view
+a = new V name: 'a'
+b = new V name: 'b'
+c = new V name: 'c'
+d = new V name: 'd'
 
+a.addSubView b
+b.addSubView c
+c.addSubView d
+
+a.appendToDomBody()

@@ -124,8 +124,8 @@ module.exports = class KDView extends KDObject
 
     @on 'viewAppended', =>
       @setViewReady()
-      @viewAppended()
       @childAppended this
+      @viewAppended()
       @parentIsInDom = yes
 
       fireViewAppended = (child)->
@@ -227,14 +227,14 @@ module.exports = class KDView extends KDObject
   # TODO: DRY these out.
   append:(child, selector)->
     @$(selector).append child.$()
-    if @parentIsInDom
-      child.emit 'viewAppended'
+    # if @parentIsInDom
+    child.emit 'viewAppended'
     this
 
   appendTo:(parent, selector)->
     @$().appendTo parent.$(selector)
-    if @parentIsInDom
-      @emit 'viewAppended'
+    # if @parentIsInDom
+    @emit 'viewAppended'
     this
 
   appendToSelector:(selector)->
@@ -243,14 +243,14 @@ module.exports = class KDView extends KDObject
 
   prepend:(child, selector)->
     @$(selector).prepend child.$()
-    if @parentIsInDom
-      child.emit 'viewAppended'
+    # if @parentIsInDom
+    child.emit 'viewAppended'
     this
 
   prependTo:(parent, selector)->
     @$().prependTo parent.$(selector)
-    if @parentIsInDom
-      @emit 'viewAppended'
+    # if @parentIsInDom
+    @emit 'viewAppended'
     this
 
   prependToSelector:(selector)->
