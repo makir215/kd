@@ -208,8 +208,9 @@ module.exports = class KDTabView extends KDScrollView
 
   #SHOW/HIDE ELEMENTS
   showPane:(pane)->
-
-    return unless pane
+    unless pane?
+      console.warn "showPane needs a pane!"
+      return
     activePane = @getActivePane()
     return if pane is activePane
 
