@@ -30,7 +30,7 @@ module.exports = class KDHitEnterInputView extends KDInputView
     @disableEnterKey() if @getOptions().showButton
 
     @on "ValidationPassed", =>
-      @blur()
+      @blur() unless @getOption 'stayFocused'
       @getOptions().callback?.call @,@getValue()
 
   enableEnterKey:->
